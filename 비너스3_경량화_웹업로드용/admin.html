@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원관리 - 관리자 페이지</title>
+    <style>
+        body { font-family: Arial; background: #222; color: #fff; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; background: #333; }
+        th, td { border: 1px solid #555; padding: 10px; text-align: center; }
+        th { background: #444; }
+    </style>
+</head>
+<body>
+    <h2>🛠️ 회원관리 페이지</h2>
+    <table id="userTable">
+        <thead>
+            <tr><th>아이디</th><th>전화번호</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const tbody = document.querySelector("#userTable tbody");
+        users.forEach(u => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${u.username}</td><td>${u.phone}</td>`;
+            tbody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
