@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>슬롯머신 게임</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    /* 🔵 메뉴 */
+    ul.nav {
+      display: flex;
+      list-style: none;
+      background: #222;
+      padding: 10px;
+      margin: 0;
+      justify-content: center;
+    }
+
+    ul.nav li {
+      margin: 0 10px;
+    }
+
+    ul.nav li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    ul.nav li a:hover {
+      color: #0ff;
+    }
+
+    /* 🔵 슬롯 UI */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .slot {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* 🔵 이미지 스타일 + 애니메이션 */
+    .slot img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .slot img:hover {
+      transform: scale(1.08);
+    }
+
+    /* 🔴 로그인 & 회원가입 팝업 공통 스타일 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 30px;
+      border: 2px solid #888;
+      z-index: 999;
+    }
+
+    .modal input, .modal button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 상단 메뉴 -->
+  <ul class="nav">
+    <!-- 📝 회원가입 버튼 -->
+    <li><a href="#" onclick="document.getElementById('signupModal').style.display='block'">회원가입</a></li>
+    
+    <!-- 🎰 슬롯 메뉴 -->
+    <li><a href="#">인기</a></li>
+    <li><a href="#">신규</a></li>
+    <li><a href="#">잭팟</a></li>
+    <li><a href="#">클래식</a></li>
+    <li><a href="#">비디오 슬롯</a></li>
+
+    <!-- 🔐 로그인 버튼 -->
+    <li><a href="#" style="color: red;" onclick="document.getElementById('loginModal').style.display='block'">로그인</a></li>
+  </ul>
+
+  <!-- ✅ 슬롯 24개 출력 -->
+  <div class="grid">
+    <div class="slot"><img src="images/1.png"><br>Slot Game 1</div>
+    <div class="slot"><img src="images/2.png"><br>Slot Game 2</div>
+    <div class="slot"><img src="images/3.png"><br>Slot Game 3</div>
+    <div class="slot"><img src="images/4.png"><br>Slot Game 4</div>
+    <div class="slot"><img src="images/5.png"><br>Slot Game 5</div>
+    <div class="slot"><img src="images/6.png"><br>Slot Game 6</div>
+    <div class="slot"><img src="images/7.png"><br>Slot Game 7</div>
+    <div class="slot"><img src="images/8.png"><br>Slot Game 8</div>
+    <div class="slot"><img src="images/9.png"><br>Slot Game 9</div>
+    <div class="slot"><img src="images/10.png"><br>Slot Game 10</div>
+    <div class="slot"><img src="images/11.png"><br>Slot Game 11</div>
+    <div class="slot"><img src="images/12.png"><br>Slot Game 12</div>
+    <div class="slot"><img src="images/13.png"><br>Slot Game 13</div>
+    <div class="slot"><img src="images/14.png"><br>Slot Game 14</div>
+    <div class="slot"><img src="images/15.png"><br>Slot Game 15</div>
+    <div class="slot"><img src="images/16.png"><br>Slot Game 16</div>
+    <div class="slot"><img src="images/17.png"><br>Slot Game 17</div>
+    <div class="slot"><img src="images/18.png"><br>Slot Game 18</div>
+    <div class="slot"><img src="images/19.png"><br>Slot Game 19</div>
+    <div class="slot"><img src="images/20.png"><br>Slot Game 20</div>
+    <div class="slot"><img src="images/21.png"><br>Slot Game 21</div>
+    <div class="slot"><img src="images/22.png"><br>Slot Game 22</div>
+    <div class="slot"><img src="images/23.png"><br>Slot Game 23</div>
+    <div class="slot"><img src="images/24.png"><br>Slot Game 24</div>
+  </div>
+
+  <!-- 📝 회원가입 팝업창 -->
+  <div id="signupModal" class="modal">
+    <h2>📝 회원가입</h2>
+    <input type="text" id="signupId" placeholder="아이디 입력">
+    <input type="text" id="signupPhone" placeholder="전화번호 입력">
+    <button onclick="signupUser()" style="background:#007bff; color:#fff;">가입하기</button>
+    <button onclick="document.getElementById('signupModal').style.display='none'" style="margin-top:10px;">닫기</button>
+  </div>
+
+  <!-- 🔐 로그인 팝업창 -->
+  <div id="loginModal" class="modal">
+    <h2>🔐 관리자 로그인</h2>
+    <input type="text" id="adminId" placeholder="아이디 입력">
+    <input type="password" id="adminPw" placeholder="비밀번호 입력">
+    <button onclick="adminLogin()" style="background:#28a745; color:#fff;">로그인</button>
+    <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px;">닫기</button>
+  </div>
+
+  <!-- ✅ 로그인 + 회원가입 스크립트 -->
+  <script>
+    function signupUser() {
+      const id = document.getElementById('signupId').value;
+      const phone = document.getElementById('signupPhone').value;
+      if (!id || !/^010\d{8}$/.test(phone)) {
+       alert('전화번호는 010으로 시작하고 하이픈 없이 11자리여야 합니다!');
+       return;
+      }
+
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      users.push({ username: id, phone: phone });
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("가입 완료!");
+      document.getElementById('signupModal').style.display = 'none';
+    }
+
+    function adminLogin() {
+      const id = document.getElementById('adminId').value;
+      const pw = document.getElementById('adminPw').value;
+      if (id === '도래미' && pw === '8989') {
+        alert("✅ 관리자 로그인 성공!");
+        window.location.href = "admin.html";
+      } else {
+        alert("❌ 관리자만 접근 가능합니다!");
+      }
+    }
+  </script>
+
+</body>
+</html>
