@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="register.css">
+  <script defer src="register.js"></script>
+</head>
+<body>
+  <div class="register-logo">MAXIM <span>CASINO</span></div>
+  <div class="register-container">
+    <h2>회원가입</h2>
+    <form id="registerForm">
+      <label for="username">아이디<br><small>(※아이디는 2글자 이상 20글자 이하 로 해주세요.)</small></label>
+      <div class="row-wrap">
+        <input type="text" id="username" autocomplete="off" placeholder="아이디 입력">
+        <button type="button" class="check-btn" onclick="checkUsername()">중복체크</button>
+      </div>
+
+      <label for="nickname">닉네임<br><small>(닉네임은 2글자 이상이여야 합니다.)</small></label>
+      <div class="row-wrap">
+        <input type="text" id="nickname" autocomplete="off" placeholder="닉네임 입력">
+        <button type="button" class="check-btn" onclick="checkNickname()">중복체크</button>
+      </div>
+
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" placeholder="비밀번호 (8자 이상)">
+      <label for="confirmPassword">비밀번호 확인</label>
+      <input type="password" id="confirmPassword" placeholder="비밀번호 재입력">
+      <label for="pin">출금 비밀번호</label>
+      <input type="password" id="pin" placeholder="숫자 4자리">
+      <label for="referral">추천인</label>
+      <input type="text" id="referral" placeholder="추천인 (선택)">
+      <label for="phone">전화번호</label>
+      <input type="text" id="phone" placeholder="01012345678">
+      <label for="bank">은행선택</label>
+      <select id="bank">
+        <option value="">은행선택</option>
+        <option value="대구은행">대구은행</option>
+<option value="부산은행">부산은행</option>
+<option value="산업은행">산업은행</option>
+<option value="새마을금고">새마을금고</option>
+<option value="신한은행">신한은행</option>
+<option value="신협중앙회">신협중앙회</option>
+<option value="수출입은행">수출입은행</option>
+<option value="수협중앙회">수협중앙회</option>
+<option value="외환은행">외환은행</option>
+<option value="우리은행">우리은행</option>
+<option value="우체국">우체국</option>
+<option value="전북은행">전북은행</option>
+<option value="제주은행">제주은행</option>
+<option value="하나은행">하나은행</option>
+<option value="한국씨티은행">한국씨티은행</option>
+<option value="HSBC은행">HSBC은행</option>
+<option value="sc제일은행">sc제일은행</option>
+<option value="카카오뱅크">카카오뱅크</option>
+<option value="케이뱅크">케이뱅크</option>
+<option value="토스">토스</option>
+      </select>
+      <label for="accountName">예금주</label>
+      <input type="text" id="accountName" placeholder="예금주 이름">
+      <label for="accountNumber">계좌번호</label>
+      <input type="text" id="accountNumber" placeholder="숫자만 입력">
+      <button type="submit" class="submit-btn">회원가입</button>
+    </form>
+  </div>
+</body>
+</html>
